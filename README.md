@@ -8,7 +8,7 @@ Portable windows application achievement unlock sound randomizer for RetroArch, 
 * [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
 # Usage
-Upon launching the program the first time, you will be told you need to configure the application.  By clicking the settings button, you will find 6 fields of settings you need to enter.
+Upon launching the program the first time, you will be told you need to configure the application.  By clicking the settings button, you will find 6 fields of settings to enter.
 
 * Unlock Sound Directory - Required
 * ffmpeg Executable Path - Required
