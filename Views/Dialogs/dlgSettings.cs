@@ -62,7 +62,7 @@ namespace RAUnlockSoundManager.Views.Dialogs
                 {
                     case "btnUnlockSoundPath":
                         ofd.Title = "Select A Sound From Unlock Sound Directory";
-                        ofd.Filter = "mp3 files (*.mp3)|*.mp3|wav files (*.wav)|*.wav|OGG Vorbis files (*.ogg)|*.ogg";
+                        ofd.Filter = "Compatible Audio Files|*.mp3;*.wav;*.ogg";
                         break;
                     case "btnffmpegExecutablePath":
                         ofd.Title = "Select ffmpeg Executable";
