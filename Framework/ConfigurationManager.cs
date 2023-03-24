@@ -27,7 +27,7 @@ namespace RAUnlockSoundManager.Framework
                     //-- Create new definition file based on default definitions
                     ConfigurationMaster TConfig = new ConfigurationMaster();
                     string ConfigurationData = JsonSerializer.Serialize(TConfig);
-                    ConfigStream.Write(TConfig);
+                    ConfigStream.Write(ConfigurationData);
                 }
             }
             //-- Get definition file
@@ -44,7 +44,7 @@ namespace RAUnlockSoundManager.Framework
             string ConfigPath = Path.Combine(Directory.GetCurrentDirectory(), "Configuration.json");
             using (StreamWriter ConfigStream = File.CreateText(ConfigPath))
             {
-                string ConfigurationData = JsonSerializer.Serialize(ConfigPath);
+                string ConfigurationData = JsonSerializer.Serialize(MasterConfiguration);
                 ConfigStream.Write(ConfigurationData);
             }
         }

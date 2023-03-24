@@ -1,4 +1,4 @@
-﻿namespace RAUnlockSoundManager.Forms.Dialogs
+﻿namespace RAUnlockSoundManager.Views.Dialogs
 {
     partial class dlgSettings
     {
@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgSettings));
             this.grpUnlockSoundPath = new System.Windows.Forms.GroupBox();
-            this.txtUnlockSoundPath = new System.Windows.Forms.TextBox();
             this.btnUnlockSoundPath = new System.Windows.Forms.Button();
+            this.txtUnlockSoundPath = new System.Windows.Forms.TextBox();
             this.grpRetroArchExecutablePath = new System.Windows.Forms.GroupBox();
             this.btnRetroArchExecutablePath = new System.Windows.Forms.Button();
             this.txtRetroArchExecutablePath = new System.Windows.Forms.TextBox();
             this.grpPCSX2ExecutablePath = new System.Windows.Forms.GroupBox();
-            this.btnExecutablePath = new System.Windows.Forms.Button();
+            this.btnPCSX2ExecutablePath = new System.Windows.Forms.Button();
             this.txtPCSX2ExecutablePath = new System.Windows.Forms.TextBox();
             this.grpbizhawkExecutablePath = new System.Windows.Forms.GroupBox();
             this.btnbizhawkExecutablePath = new System.Windows.Forms.Button();
@@ -68,13 +68,6 @@
             this.grpUnlockSoundPath.TabStop = false;
             this.grpUnlockSoundPath.Text = "Unlock Sound Path";
             // 
-            // txtUnlockSoundPath
-            // 
-            this.txtUnlockSoundPath.Location = new System.Drawing.Point(6, 22);
-            this.txtUnlockSoundPath.Name = "txtUnlockSoundPath";
-            this.txtUnlockSoundPath.Size = new System.Drawing.Size(560, 23);
-            this.txtUnlockSoundPath.TabIndex = 1;
-            // 
             // btnUnlockSoundPath
             // 
             this.btnUnlockSoundPath.Location = new System.Drawing.Point(572, 22);
@@ -83,6 +76,14 @@
             this.btnUnlockSoundPath.TabIndex = 1;
             this.btnUnlockSoundPath.Text = "...";
             this.btnUnlockSoundPath.UseVisualStyleBackColor = true;
+            this.btnUnlockSoundPath.Click += new System.EventHandler(this.GetPathClick);
+            // 
+            // txtUnlockSoundPath
+            // 
+            this.txtUnlockSoundPath.Location = new System.Drawing.Point(6, 22);
+            this.txtUnlockSoundPath.Name = "txtUnlockSoundPath";
+            this.txtUnlockSoundPath.Size = new System.Drawing.Size(560, 23);
+            this.txtUnlockSoundPath.TabIndex = 1;
             // 
             // grpRetroArchExecutablePath
             // 
@@ -103,6 +104,7 @@
             this.btnRetroArchExecutablePath.TabIndex = 1;
             this.btnRetroArchExecutablePath.Text = "...";
             this.btnRetroArchExecutablePath.UseVisualStyleBackColor = true;
+            this.btnRetroArchExecutablePath.Click += new System.EventHandler(this.GetPathClick);
             // 
             // txtRetroArchExecutablePath
             // 
@@ -113,7 +115,7 @@
             // 
             // grpPCSX2ExecutablePath
             // 
-            this.grpPCSX2ExecutablePath.Controls.Add(this.btnExecutablePath);
+            this.grpPCSX2ExecutablePath.Controls.Add(this.btnPCSX2ExecutablePath);
             this.grpPCSX2ExecutablePath.Controls.Add(this.txtPCSX2ExecutablePath);
             this.grpPCSX2ExecutablePath.Location = new System.Drawing.Point(12, 197);
             this.grpPCSX2ExecutablePath.Name = "grpPCSX2ExecutablePath";
@@ -122,14 +124,15 @@
             this.grpPCSX2ExecutablePath.TabStop = false;
             this.grpPCSX2ExecutablePath.Text = "PCSX2 Executable Path";
             // 
-            // btnExecutablePath
+            // btnPCSX2ExecutablePath
             // 
-            this.btnExecutablePath.Location = new System.Drawing.Point(572, 22);
-            this.btnExecutablePath.Name = "btnExecutablePath";
-            this.btnExecutablePath.Size = new System.Drawing.Size(33, 23);
-            this.btnExecutablePath.TabIndex = 1;
-            this.btnExecutablePath.Text = "...";
-            this.btnExecutablePath.UseVisualStyleBackColor = true;
+            this.btnPCSX2ExecutablePath.Location = new System.Drawing.Point(572, 22);
+            this.btnPCSX2ExecutablePath.Name = "btnPCSX2ExecutablePath";
+            this.btnPCSX2ExecutablePath.Size = new System.Drawing.Size(33, 23);
+            this.btnPCSX2ExecutablePath.TabIndex = 1;
+            this.btnPCSX2ExecutablePath.Text = "...";
+            this.btnPCSX2ExecutablePath.UseVisualStyleBackColor = true;
+            this.btnPCSX2ExecutablePath.Click += new System.EventHandler(this.GetPathClick);
             // 
             // txtPCSX2ExecutablePath
             // 
@@ -157,6 +160,7 @@
             this.btnbizhawkExecutablePath.TabIndex = 1;
             this.btnbizhawkExecutablePath.Text = "...";
             this.btnbizhawkExecutablePath.UseVisualStyleBackColor = true;
+            this.btnbizhawkExecutablePath.Click += new System.EventHandler(this.GetPathClick);
             // 
             // txtbizhawkExecutablePath
             // 
@@ -184,6 +188,7 @@
             this.btnDuckstationExecutablePath.TabIndex = 1;
             this.btnDuckstationExecutablePath.Text = "...";
             this.btnDuckstationExecutablePath.UseVisualStyleBackColor = true;
+            this.btnDuckstationExecutablePath.Click += new System.EventHandler(this.GetPathClick);
             // 
             // txtDuckstationExecutablePath
             // 
@@ -211,6 +216,7 @@
             this.btnffmpegExecutablePath.TabIndex = 1;
             this.btnffmpegExecutablePath.Text = "...";
             this.btnffmpegExecutablePath.UseVisualStyleBackColor = true;
+            this.btnffmpegExecutablePath.Click += new System.EventHandler(this.GetPathClick);
             // 
             // txtffmpegExecutablePath
             // 
@@ -227,6 +233,7 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.CancelButtonClick);
             // 
             // btnOK
             // 
@@ -236,6 +243,7 @@
             this.btnOK.TabIndex = 7;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.OKButtonClick);
             // 
             // dlgSettings
             // 
@@ -257,6 +265,7 @@
             this.Name = "dlgSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.FormLoad);
             this.grpUnlockSoundPath.ResumeLayout(false);
             this.grpUnlockSoundPath.PerformLayout();
             this.grpRetroArchExecutablePath.ResumeLayout(false);
@@ -282,7 +291,7 @@
         private Button btnRetroArchExecutablePath;
         private TextBox txtRetroArchExecutablePath;
         private GroupBox grpPCSX2ExecutablePath;
-        private Button btnExecutablePath;
+        private Button btnPCSX2ExecutablePath;
         private TextBox txtPCSX2ExecutablePath;
         private GroupBox grpbizhawkExecutablePath;
         private Button btnbizhawkExecutablePath;
