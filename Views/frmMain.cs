@@ -55,7 +55,7 @@ namespace RAUnlockSoundManager.Views
             switch (Path.GetExtension(TargetSoundFileName).ToLower())
             {
                 case ".mp3":
-                    using (var MP3File = new Mp3FileReader(TargetSoundFileName))
+                    using (var MP3File = new MediaFoundationReader(TargetSoundFileName))
                     {
                         using (var WaveOutput = new NAudio.Wave.WaveOut())
                         {
@@ -135,6 +135,7 @@ namespace RAUnlockSoundManager.Views
                 Random RandomSoundIndexGenerator = new Random();
                 int RandomSoundIndex = RandomSoundIndexGenerator.Next(0, SoundList.Count - 1);
                 SourceSoundFileName = Path.Combine(Configuration.SoundPath, SoundList[RandomSoundIndex]);
+                SourceSoundFileNameExtension = Path.GetExtension(SourceSoundFileName).ToLower();
             }
             //-- Get destination and launch target
             string DestinationSoundFileName = "";
@@ -188,7 +189,7 @@ namespace RAUnlockSoundManager.Views
             switch (SourceSoundFileNameExtension)
             {
                 case ".mp3":
-                    using (var MP3File = new Mp3FileReader(SourceSoundFileName))
+                    using (var MP3File = new MediaFoundationReader(SourceSoundFileName))
                     {
                         using (var WaveOutput = new NAudio.Wave.WaveOut())
                         {
