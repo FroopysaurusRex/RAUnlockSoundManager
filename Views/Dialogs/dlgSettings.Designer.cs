@@ -32,29 +32,18 @@
             this.grpUnlockSoundPath = new System.Windows.Forms.GroupBox();
             this.btnUnlockSoundPath = new System.Windows.Forms.Button();
             this.txtUnlockSoundPath = new System.Windows.Forms.TextBox();
-            this.grpRetroArchExecutablePath = new System.Windows.Forms.GroupBox();
-            this.btnRetroArchExecutablePath = new System.Windows.Forms.Button();
-            this.txtRetroArchExecutablePath = new System.Windows.Forms.TextBox();
-            this.grpPCSX2ExecutablePath = new System.Windows.Forms.GroupBox();
-            this.btnPCSX2ExecutablePath = new System.Windows.Forms.Button();
-            this.txtPCSX2ExecutablePath = new System.Windows.Forms.TextBox();
-            this.grpbizhawkExecutablePath = new System.Windows.Forms.GroupBox();
-            this.btnbizhawkExecutablePath = new System.Windows.Forms.Button();
-            this.txtbizhawkExecutablePath = new System.Windows.Forms.TextBox();
-            this.grpDuckstationExecutablePath = new System.Windows.Forms.GroupBox();
-            this.btnDuckstationExecutablePath = new System.Windows.Forms.Button();
-            this.txtDuckstationExecutablePath = new System.Windows.Forms.TextBox();
             this.grpffmpegExecutablePath = new System.Windows.Forms.GroupBox();
             this.btnffmpegExecutablePath = new System.Windows.Forms.Button();
             this.txtffmpegExecutablePath = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.grpEmulatorExecutablePaths = new System.Windows.Forms.GroupBox();
+            this.lstEmulators = new System.Windows.Forms.ListBox();
+            this.btnEmulatorExecutablePath = new System.Windows.Forms.Button();
+            this.txtEmulatorExecutablePath = new System.Windows.Forms.TextBox();
             this.grpUnlockSoundPath.SuspendLayout();
-            this.grpRetroArchExecutablePath.SuspendLayout();
-            this.grpPCSX2ExecutablePath.SuspendLayout();
-            this.grpbizhawkExecutablePath.SuspendLayout();
-            this.grpDuckstationExecutablePath.SuspendLayout();
             this.grpffmpegExecutablePath.SuspendLayout();
+            this.grpEmulatorExecutablePaths.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpUnlockSoundPath
@@ -84,118 +73,6 @@
             this.txtUnlockSoundPath.Name = "txtUnlockSoundPath";
             this.txtUnlockSoundPath.Size = new System.Drawing.Size(560, 23);
             this.txtUnlockSoundPath.TabIndex = 1;
-            // 
-            // grpRetroArchExecutablePath
-            // 
-            this.grpRetroArchExecutablePath.Controls.Add(this.btnRetroArchExecutablePath);
-            this.grpRetroArchExecutablePath.Controls.Add(this.txtRetroArchExecutablePath);
-            this.grpRetroArchExecutablePath.Location = new System.Drawing.Point(12, 137);
-            this.grpRetroArchExecutablePath.Name = "grpRetroArchExecutablePath";
-            this.grpRetroArchExecutablePath.Size = new System.Drawing.Size(611, 54);
-            this.grpRetroArchExecutablePath.TabIndex = 1;
-            this.grpRetroArchExecutablePath.TabStop = false;
-            this.grpRetroArchExecutablePath.Text = "RetroArch Executable Path";
-            // 
-            // btnRetroArchExecutablePath
-            // 
-            this.btnRetroArchExecutablePath.Location = new System.Drawing.Point(572, 22);
-            this.btnRetroArchExecutablePath.Name = "btnRetroArchExecutablePath";
-            this.btnRetroArchExecutablePath.Size = new System.Drawing.Size(33, 23);
-            this.btnRetroArchExecutablePath.TabIndex = 1;
-            this.btnRetroArchExecutablePath.Text = "...";
-            this.btnRetroArchExecutablePath.UseVisualStyleBackColor = true;
-            this.btnRetroArchExecutablePath.Click += new System.EventHandler(this.GetPathClick);
-            // 
-            // txtRetroArchExecutablePath
-            // 
-            this.txtRetroArchExecutablePath.Location = new System.Drawing.Point(6, 22);
-            this.txtRetroArchExecutablePath.Name = "txtRetroArchExecutablePath";
-            this.txtRetroArchExecutablePath.Size = new System.Drawing.Size(560, 23);
-            this.txtRetroArchExecutablePath.TabIndex = 1;
-            // 
-            // grpPCSX2ExecutablePath
-            // 
-            this.grpPCSX2ExecutablePath.Controls.Add(this.btnPCSX2ExecutablePath);
-            this.grpPCSX2ExecutablePath.Controls.Add(this.txtPCSX2ExecutablePath);
-            this.grpPCSX2ExecutablePath.Location = new System.Drawing.Point(12, 197);
-            this.grpPCSX2ExecutablePath.Name = "grpPCSX2ExecutablePath";
-            this.grpPCSX2ExecutablePath.Size = new System.Drawing.Size(611, 54);
-            this.grpPCSX2ExecutablePath.TabIndex = 2;
-            this.grpPCSX2ExecutablePath.TabStop = false;
-            this.grpPCSX2ExecutablePath.Text = "PCSX2 Executable Path";
-            // 
-            // btnPCSX2ExecutablePath
-            // 
-            this.btnPCSX2ExecutablePath.Location = new System.Drawing.Point(572, 22);
-            this.btnPCSX2ExecutablePath.Name = "btnPCSX2ExecutablePath";
-            this.btnPCSX2ExecutablePath.Size = new System.Drawing.Size(33, 23);
-            this.btnPCSX2ExecutablePath.TabIndex = 1;
-            this.btnPCSX2ExecutablePath.Text = "...";
-            this.btnPCSX2ExecutablePath.UseVisualStyleBackColor = true;
-            this.btnPCSX2ExecutablePath.Click += new System.EventHandler(this.GetPathClick);
-            // 
-            // txtPCSX2ExecutablePath
-            // 
-            this.txtPCSX2ExecutablePath.Location = new System.Drawing.Point(6, 22);
-            this.txtPCSX2ExecutablePath.Name = "txtPCSX2ExecutablePath";
-            this.txtPCSX2ExecutablePath.Size = new System.Drawing.Size(560, 23);
-            this.txtPCSX2ExecutablePath.TabIndex = 1;
-            // 
-            // grpbizhawkExecutablePath
-            // 
-            this.grpbizhawkExecutablePath.Controls.Add(this.btnbizhawkExecutablePath);
-            this.grpbizhawkExecutablePath.Controls.Add(this.txtbizhawkExecutablePath);
-            this.grpbizhawkExecutablePath.Location = new System.Drawing.Point(12, 257);
-            this.grpbizhawkExecutablePath.Name = "grpbizhawkExecutablePath";
-            this.grpbizhawkExecutablePath.Size = new System.Drawing.Size(611, 54);
-            this.grpbizhawkExecutablePath.TabIndex = 3;
-            this.grpbizhawkExecutablePath.TabStop = false;
-            this.grpbizhawkExecutablePath.Text = "bizhawk Executable Path";
-            // 
-            // btnbizhawkExecutablePath
-            // 
-            this.btnbizhawkExecutablePath.Location = new System.Drawing.Point(572, 22);
-            this.btnbizhawkExecutablePath.Name = "btnbizhawkExecutablePath";
-            this.btnbizhawkExecutablePath.Size = new System.Drawing.Size(33, 23);
-            this.btnbizhawkExecutablePath.TabIndex = 1;
-            this.btnbizhawkExecutablePath.Text = "...";
-            this.btnbizhawkExecutablePath.UseVisualStyleBackColor = true;
-            this.btnbizhawkExecutablePath.Click += new System.EventHandler(this.GetPathClick);
-            // 
-            // txtbizhawkExecutablePath
-            // 
-            this.txtbizhawkExecutablePath.Location = new System.Drawing.Point(6, 22);
-            this.txtbizhawkExecutablePath.Name = "txtbizhawkExecutablePath";
-            this.txtbizhawkExecutablePath.Size = new System.Drawing.Size(560, 23);
-            this.txtbizhawkExecutablePath.TabIndex = 1;
-            // 
-            // grpDuckstationExecutablePath
-            // 
-            this.grpDuckstationExecutablePath.Controls.Add(this.btnDuckstationExecutablePath);
-            this.grpDuckstationExecutablePath.Controls.Add(this.txtDuckstationExecutablePath);
-            this.grpDuckstationExecutablePath.Location = new System.Drawing.Point(12, 317);
-            this.grpDuckstationExecutablePath.Name = "grpDuckstationExecutablePath";
-            this.grpDuckstationExecutablePath.Size = new System.Drawing.Size(611, 54);
-            this.grpDuckstationExecutablePath.TabIndex = 4;
-            this.grpDuckstationExecutablePath.TabStop = false;
-            this.grpDuckstationExecutablePath.Text = "Duckstation Executable Path";
-            // 
-            // btnDuckstationExecutablePath
-            // 
-            this.btnDuckstationExecutablePath.Location = new System.Drawing.Point(572, 22);
-            this.btnDuckstationExecutablePath.Name = "btnDuckstationExecutablePath";
-            this.btnDuckstationExecutablePath.Size = new System.Drawing.Size(33, 23);
-            this.btnDuckstationExecutablePath.TabIndex = 1;
-            this.btnDuckstationExecutablePath.Text = "...";
-            this.btnDuckstationExecutablePath.UseVisualStyleBackColor = true;
-            this.btnDuckstationExecutablePath.Click += new System.EventHandler(this.GetPathClick);
-            // 
-            // txtDuckstationExecutablePath
-            // 
-            this.txtDuckstationExecutablePath.Location = new System.Drawing.Point(6, 22);
-            this.txtDuckstationExecutablePath.Name = "txtDuckstationExecutablePath";
-            this.txtDuckstationExecutablePath.Size = new System.Drawing.Size(560, 23);
-            this.txtDuckstationExecutablePath.TabIndex = 1;
             // 
             // grpffmpegExecutablePath
             // 
@@ -227,7 +104,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(467, 377);
+            this.btnCancel.Location = new System.Drawing.Point(468, 290);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 6;
@@ -237,7 +114,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(548, 377);
+            this.btnOK.Location = new System.Drawing.Point(549, 290);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 7;
@@ -245,18 +122,60 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.OKButtonClick);
             // 
+            // grpEmulatorExecutablePaths
+            // 
+            this.grpEmulatorExecutablePaths.Controls.Add(this.lstEmulators);
+            this.grpEmulatorExecutablePaths.Controls.Add(this.btnEmulatorExecutablePath);
+            this.grpEmulatorExecutablePaths.Controls.Add(this.txtEmulatorExecutablePath);
+            this.grpEmulatorExecutablePaths.Location = new System.Drawing.Point(12, 132);
+            this.grpEmulatorExecutablePaths.Name = "grpEmulatorExecutablePaths";
+            this.grpEmulatorExecutablePaths.Size = new System.Drawing.Size(611, 152);
+            this.grpEmulatorExecutablePaths.TabIndex = 8;
+            this.grpEmulatorExecutablePaths.TabStop = false;
+            this.grpEmulatorExecutablePaths.Text = "Emulator Executable Paths";
+            // 
+            // lstEmulators
+            // 
+            this.lstEmulators.FormattingEnabled = true;
+            this.lstEmulators.ItemHeight = 15;
+            this.lstEmulators.Items.AddRange(new object[] {
+            "BizHawk",
+            "Duckstation",
+            "PCSX2",
+            "RAP64",
+            "RetroArch"});
+            this.lstEmulators.Location = new System.Drawing.Point(6, 22);
+            this.lstEmulators.Name = "lstEmulators";
+            this.lstEmulators.Size = new System.Drawing.Size(144, 124);
+            this.lstEmulators.TabIndex = 2;
+            this.lstEmulators.SelectedIndexChanged += new System.EventHandler(this.EmulatorIndexChange);
+            // 
+            // btnEmulatorExecutablePath
+            // 
+            this.btnEmulatorExecutablePath.Location = new System.Drawing.Point(572, 22);
+            this.btnEmulatorExecutablePath.Name = "btnEmulatorExecutablePath";
+            this.btnEmulatorExecutablePath.Size = new System.Drawing.Size(33, 23);
+            this.btnEmulatorExecutablePath.TabIndex = 1;
+            this.btnEmulatorExecutablePath.Text = "...";
+            this.btnEmulatorExecutablePath.UseVisualStyleBackColor = true;
+            this.btnEmulatorExecutablePath.Click += new System.EventHandler(this.GetPathClick);
+            // 
+            // txtEmulatorExecutablePath
+            // 
+            this.txtEmulatorExecutablePath.Location = new System.Drawing.Point(156, 22);
+            this.txtEmulatorExecutablePath.Name = "txtEmulatorExecutablePath";
+            this.txtEmulatorExecutablePath.Size = new System.Drawing.Size(410, 23);
+            this.txtEmulatorExecutablePath.TabIndex = 1;
+            // 
             // dlgSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(636, 409);
+            this.ClientSize = new System.Drawing.Size(636, 320);
+            this.Controls.Add(this.grpEmulatorExecutablePaths);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.grpffmpegExecutablePath);
-            this.Controls.Add(this.grpDuckstationExecutablePath);
-            this.Controls.Add(this.grpbizhawkExecutablePath);
-            this.Controls.Add(this.grpPCSX2ExecutablePath);
-            this.Controls.Add(this.grpRetroArchExecutablePath);
             this.Controls.Add(this.grpUnlockSoundPath);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -268,16 +187,10 @@
             this.Load += new System.EventHandler(this.FormLoad);
             this.grpUnlockSoundPath.ResumeLayout(false);
             this.grpUnlockSoundPath.PerformLayout();
-            this.grpRetroArchExecutablePath.ResumeLayout(false);
-            this.grpRetroArchExecutablePath.PerformLayout();
-            this.grpPCSX2ExecutablePath.ResumeLayout(false);
-            this.grpPCSX2ExecutablePath.PerformLayout();
-            this.grpbizhawkExecutablePath.ResumeLayout(false);
-            this.grpbizhawkExecutablePath.PerformLayout();
-            this.grpDuckstationExecutablePath.ResumeLayout(false);
-            this.grpDuckstationExecutablePath.PerformLayout();
             this.grpffmpegExecutablePath.ResumeLayout(false);
             this.grpffmpegExecutablePath.PerformLayout();
+            this.grpEmulatorExecutablePaths.ResumeLayout(false);
+            this.grpEmulatorExecutablePaths.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -287,22 +200,14 @@
         private GroupBox grpUnlockSoundPath;
         private Button btnUnlockSoundPath;
         private TextBox txtUnlockSoundPath;
-        private GroupBox grpRetroArchExecutablePath;
-        private Button btnRetroArchExecutablePath;
-        private TextBox txtRetroArchExecutablePath;
-        private GroupBox grpPCSX2ExecutablePath;
-        private Button btnPCSX2ExecutablePath;
-        private TextBox txtPCSX2ExecutablePath;
-        private GroupBox grpbizhawkExecutablePath;
-        private Button btnbizhawkExecutablePath;
-        private TextBox txtbizhawkExecutablePath;
-        private GroupBox grpDuckstationExecutablePath;
-        private Button btnDuckstationExecutablePath;
-        private TextBox txtDuckstationExecutablePath;
         private GroupBox grpffmpegExecutablePath;
         private Button btnffmpegExecutablePath;
         private TextBox txtffmpegExecutablePath;
         private Button btnCancel;
         private Button btnOK;
+        private GroupBox grpEmulatorExecutablePaths;
+        private ListBox lstEmulators;
+        private Button btnEmulatorExecutablePath;
+        private TextBox txtEmulatorExecutablePath;
     }
 }

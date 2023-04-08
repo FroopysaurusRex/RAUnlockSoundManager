@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using RAUnlockSoundManager.Framework;
+using System.Security.Cryptography;
 
 namespace RAUnlockSoundManager.Views.Dialogs
 {
@@ -20,6 +21,8 @@ namespace RAUnlockSoundManager.Views.Dialogs
         /// Local configuration object
         /// </summary>
         private ConfigurationManager.ConfigurationMaster Configuration;
+
+        private Dictionary<string, string> CurrentState = new Dictionary<string, string>();
 
         #endregion
 
@@ -42,10 +45,19 @@ namespace RAUnlockSoundManager.Views.Dialogs
             Configuration = ConfigurationManager.GetConfiguration();
             txtUnlockSoundPath.Text = Configuration.SoundPath;
             txtffmpegExecutablePath.Text = Configuration.ffmpegExePath;
-            txtRetroArchExecutablePath.Text = Configuration.RetroArchExePath;
-            txtPCSX2ExecutablePath.Text = Configuration.PCSX2ExePath;
-            txtbizhawkExecutablePath.Text = Configuration.bizhawkExePath;
-            txtDuckstationExecutablePath.Text = Configuration.DuckstationExePath;
+            CurrentState = Configuration.EmulatorExePaths;
+        }
+
+        /// <summary>
+        /// Emulator index change handler
+        /// </summary>
+        internal void EmulatorIndexChange(object sender, EventArgs e)
+        {
+            if (lstEmulators.SelectedItems.Count > 0)
+            {
+                string Emulator = lstEmulators.SelectedItem.ToString();
+                txtEmulatorExecutablePath.Text = CurrentState[Emulator];
+            }
         }
 
         /// <summary>
@@ -68,21 +80,34 @@ namespace RAUnlockSoundManager.Views.Dialogs
                         ofd.Title = "Select ffmpeg Executable";
                         ofd.Filter = "ffmpeg Executable|ffmpeg.exe";
                         break;
-                    case "btnRetroArchExecutablePath":
-                        ofd.Title = "Select RetroArch Executable";
-                        ofd.Filter = "RetroArch Executable|retroarch.exe";
-                        break;
-                    case "btnPCSX2ExecutablePath":
-                        ofd.Title = "Select PCSX2 Executable";
-                        ofd.Filter = "PCSX2 Executable|*.exe";
-                        break;
-                    case "btnbizhawkExecutablePath":
-                        ofd.Title = "Select bizhawk Executable";
-                        ofd.Filter = "bizhawk Executable|*.exe";
-                        break;
-                    case "btnDuckstationExecutablePath":
-                        ofd.Title = "Select Duckstation Executable";
-                        ofd.Filter = "Duckstation Executable|*.exe";
+                    case "btnEmulatorExecutablePath":
+                        if (lstEmulators.SelectedItems.Count > 0)
+                        {
+                            string Emulator = lstEmulators.SelectedItem.ToString();
+                            switch (Emulator)
+                            {
+                                case "BizHawk":
+                                    ofd.Title = "Select BizHawk Executable";
+                                    ofd.Filter = "BizHawk Executable|EmuHawk.exe";
+                                    break;
+                                case "Duckstation":
+                                    ofd.Title = "Select Duckstation Executable";
+                                    ofd.Filter = "Duckstation Executable|*.exe";
+                                    break;
+                                case "PCSX2":
+                                    ofd.Title = "Select PCSX2 Executable";
+                                    ofd.Filter = "PCSX2 Executable|*.exe";
+                                    break;
+                                case "RAP64":
+                                    ofd.Title = "Select RAP64 Executable";
+                                    ofd.Filter = "RAP64 Executable|RAProject64.exe";
+                                    break;
+                                case "RetroArch":
+                                    ofd.Title = "Select RetroArch Executable";
+                                    ofd.Filter = "RetroArch Executable|retroarch.exe";
+                                    break;
+                            }
+                        }
                         break;
                 }
                 DialogResult result = ofd.ShowDialog();
@@ -96,21 +121,25 @@ namespace RAUnlockSoundManager.Views.Dialogs
                         case "btnffmpegExecutablePath":
                             txtffmpegExecutablePath.Text = ofd.FileName;
                             break;
-                        case "btnRetroArchExecutablePath":
-                            txtRetroArchExecutablePath.Text = ofd.FileName;
-                            break;
-                        case "btnPCSX2ExecutablePath":
-                            txtPCSX2ExecutablePath.Text = ofd.FileName;
-                            break;
-                        case "btnbizhawkExecutablePath":
-                            txtbizhawkExecutablePath.Text = ofd.FileName;
-                            break;
-                        case "btnDuckstationExecutablePath":
-                            txtDuckstationExecutablePath.Text = ofd.FileName;
+                        case "btnEmulatorExecutablePath":
+                            if (lstEmulators.SelectedItems.Count > 0)
+                            {
+                                txtEmulatorExecutablePath.Text = ofd.FileName;
+                                string Emulator = lstEmulators.SelectedItem.ToString();
+                                CurrentState[Emulator] = ofd.FileName;
+                            }
                             break;
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// No typing in path fields at all
+        /// </summary>
+        internal void NoTypingInPathFields(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
         /// <summary>
@@ -130,10 +159,7 @@ namespace RAUnlockSoundManager.Views.Dialogs
             //-- Update master configuration object and save
             Configuration.SoundPath = txtUnlockSoundPath.Text;
             Configuration.ffmpegExePath = txtffmpegExecutablePath.Text;
-            Configuration.RetroArchExePath = txtRetroArchExecutablePath.Text;
-            Configuration.PCSX2ExePath = txtPCSX2ExecutablePath.Text;
-            Configuration.bizhawkExePath = txtbizhawkExecutablePath.Text;
-            Configuration.DuckstationExePath = txtDuckstationExecutablePath.Text;
+            Configuration.EmulatorExePaths = CurrentState;
             ConfigurationManager.SaveConfiguration(Configuration);
             this.DialogResult = DialogResult.OK;
             this.Close();

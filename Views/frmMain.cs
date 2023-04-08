@@ -139,27 +139,27 @@ namespace RAUnlockSoundManager.Views
             }
             //-- Get destination and launch target
             string DestinationSoundFileName = "";
-            string ProgramToLaunch = "";
+            string ProgramToLaunch = Configuration.EmulatorExePaths[EmulatorUsed];
             bool IsWaveFile = false;
             switch (EmulatorUsed)
             {
-                case "RetroArch":
-                    DestinationSoundFileName = Path.Combine(Path.GetDirectoryName(Configuration.RetroArchExePath), "assets", "sounds", "unlock.ogg");
-                    ProgramToLaunch = Configuration.RetroArchExePath;
-                    break;
-                case "PCSX2":
-                    DestinationSoundFileName = Path.Combine(Path.GetDirectoryName(Configuration.PCSX2ExePath), "resources", "sounds", "achievements", "unlock.wav");
-                    ProgramToLaunch = Configuration.PCSX2ExePath;
+                case "RAP64":
+                    DestinationSoundFileName = Path.Combine(Path.GetDirectoryName(ProgramToLaunch), "overlay", "unlock.wav");
                     IsWaveFile = true;
                     break;
-                case "bizhawk":
-                    DestinationSoundFileName = Path.Combine(Path.GetDirectoryName(Configuration.bizhawkExePath), "overlay", "unlock.wav");
-                    ProgramToLaunch = Configuration.bizhawkExePath;
+                case "RetroArch":
+                    DestinationSoundFileName = Path.Combine(Path.GetDirectoryName(ProgramToLaunch), "assets", "sounds", "unlock.ogg");
+                    break;
+                case "PCSX2":
+                    DestinationSoundFileName = Path.Combine(Path.GetDirectoryName(ProgramToLaunch), "resources", "sounds", "achievements", "unlock.wav");
+                    IsWaveFile = true;
+                    break;
+                case "BizHawk":
+                    DestinationSoundFileName = Path.Combine(Path.GetDirectoryName(ProgramToLaunch), "overlay", "unlock.wav");
                     IsWaveFile = true;
                     break;
                 case "Duckstation":
-                    DestinationSoundFileName = Path.Combine(Path.GetDirectoryName(Configuration.DuckstationExePath), "resources", "sounds", "achievements", "unlock.wav");
-                    ProgramToLaunch = Configuration.DuckstationExePath;
+                    DestinationSoundFileName = Path.Combine(Path.GetDirectoryName(ProgramToLaunch), "resources", "sounds", "achievements", "unlock.wav");
                     IsWaveFile = true;
                     break;
             }
@@ -232,7 +232,16 @@ namespace RAUnlockSoundManager.Views
                     break;
             }
             //-- Launch target program and exit
-            Process.Start(ProgramToLaunch);
+            try
+            {
+                Process.Start(ProgramToLaunch);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Target emulator application failed to launch.\n\nException: {ex.Message}", "Application Launch Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             Environment.Exit(0);
         }
 
@@ -290,21 +299,12 @@ namespace RAUnlockSoundManager.Views
             cboUnlockSound.Items.AddRange(SoundList.ToArray());
             //-- Check and load emulator list
             EmulatorList = new List<string>();
-            if (File.Exists(Configuration.RetroArchExePath) == true)
+            foreach (KeyValuePair<string, string> kvp in Configuration.EmulatorExePaths)
             {
-                EmulatorList.Add("RetroArch");
-            }
-            if (File.Exists(Configuration.PCSX2ExePath) == true)
-            {
-                EmulatorList.Add("PCSX2");
-            }
-            if (File.Exists(Configuration.bizhawkExePath) == true)
-            {
-                EmulatorList.Add("bizhawk");
-            }
-            if (File.Exists(Configuration.DuckstationExePath) == true)
-            {
-                EmulatorList.Add("Duckstation");
+                if (File.Exists(kvp.Value.ToString()) == true)
+                {
+                    EmulatorList.Add(kvp.Key.ToString());
+                }
             }
             if (EmulatorList.Count == 0)
             {

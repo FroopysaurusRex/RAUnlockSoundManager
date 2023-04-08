@@ -19,7 +19,7 @@ namespace RAUnlockSoundManager.Framework
         public static ConfigurationMaster GetConfiguration()
         {
             //-- Get current configuration path and check
-            string ConfigPath = Path.Combine(Directory.GetCurrentDirectory(), "Configuration.json");
+            string ConfigPath = Path.Combine(Directory.GetCurrentDirectory(), "config.json");
             if (File.Exists(ConfigPath) == false)
             {
                 using (StreamWriter ConfigStream = File.CreateText(ConfigPath))
@@ -41,7 +41,7 @@ namespace RAUnlockSoundManager.Framework
         public static void SaveConfiguration(ConfigurationMaster MasterConfiguration)
         {
             //-- Get current target definition path and check
-            string ConfigPath = Path.Combine(Directory.GetCurrentDirectory(), "Configuration.json");
+            string ConfigPath = Path.Combine(Directory.GetCurrentDirectory(), "config.json");
             using (StreamWriter ConfigStream = File.CreateText(ConfigPath))
             {
                 string ConfigurationData = JsonSerializer.Serialize(MasterConfiguration);
@@ -53,6 +53,18 @@ namespace RAUnlockSoundManager.Framework
         /// </summary>
         public class ConfigurationMaster
         {
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public ConfigurationMaster()
+            {
+                //-- Initialize emulator paths
+                _EmulatorExePaths["BizHawk"] = "";
+                _EmulatorExePaths["Duckstation"] = "";
+                _EmulatorExePaths["PCSX2"] = "";
+                _EmulatorExePaths["RAP64"] = "";
+                _EmulatorExePaths["RetroArch"] = "";
+            }
             private string _SoundPath = "";
             /// <summary>
             /// Unlock sound path
@@ -68,64 +80,19 @@ namespace RAUnlockSoundManager.Framework
                     _SoundPath = value;
                 }
             }
-            private string _RetroArchExePath = "";
+            private Dictionary<string, string> _EmulatorExePaths = new();
             /// <summary>
-            /// RetroArch executable path
+            /// Emulator executable paths
             /// </summary>
-            public string RetroArchExePath
+            public Dictionary<string,string> EmulatorExePaths
             {
                 get
                 {
-                    return _RetroArchExePath;
+                    return _EmulatorExePaths;
                 }
                 set
                 {
-                    _RetroArchExePath = value;
-                }
-            }
-            private string _PCSX2ExePath = "";
-            /// <summary>
-            /// PCSX2 executable path
-            /// </summary>
-            public string PCSX2ExePath
-            {
-                get
-                {
-                    return _PCSX2ExePath;
-                }
-                set
-                {
-                    _PCSX2ExePath = value;
-                }
-            }
-            private string _bizhawkExePath = "";
-            /// <summary>
-            /// bizhawk executable path
-            /// </summary>
-            public string bizhawkExePath
-            {
-                get
-                {
-                    return _bizhawkExePath;
-                }
-                set
-                {
-                    _bizhawkExePath = value;
-                }
-            }
-            private string _DuckstationExePath = "";
-            /// <summary>
-            /// Duckstation executable path
-            /// </summary>
-            public string DuckstationExePath
-            {
-                get
-                {
-                    return _DuckstationExePath;
-                }
-                set
-                {
-                    _DuckstationExePath = value;
+                    _EmulatorExePaths = value;
                 }
             }
             private string _ffmpegExePath = "";
