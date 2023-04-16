@@ -2,11 +2,11 @@
 Portable windows application achievement unlock sound randomizer for emulators that communicate with RetroAchievements
 
 # Supported Emulators
-BizHawk
-DuckStation
-PCSX2
-RAP64
-RetroArch
+* BizHawk
+* DuckStation
+* PCSX2
+* RAP64
+* RetroArch
 
 # Prerequisites
 * Windows
