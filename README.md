@@ -1,5 +1,5 @@
 # RA Unlock Sound Manager
-Portable windows application achievement unlock sound randomizer for emulators that communicate with RetroArch
+Portable windows application achievement unlock sound randomizer for emulators that communicate with RetroAchievements
 
 # Supported Emulators
 BizHawk
