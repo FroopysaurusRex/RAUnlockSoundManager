@@ -1,5 +1,12 @@
 # RA Unlock Sound Manager
-Portable windows application achievement unlock sound randomizer for RetroArch, PCSX2, bizhawk and Duckstation.
+Portable windows application achievement unlock sound randomizer for emulators that communicate with RetroArch
+
+# Supported Emulators
+BizHawk
+DuckStation
+PCSX2
+RAP64
+RetroArch
 
 # Prerequisites
 * Windows
@@ -8,14 +15,15 @@ Portable windows application achievement unlock sound randomizer for RetroArch, 
 * [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
 # Usage
-Upon launching the program the first time, you will be told you need to configure the application.  By clicking the settings button, you will find 6 fields of settings to enter.
+Upon launching the program the first time, you will be told you need to configure the application.  By clicking the settings button, you will find several fields of settings to enter.
 
 * Unlock Sound Directory - Required
 * ffmpeg Executable Path - Required
-* RetroArch Executable Path
-* PCSX2 Executable Path
-* bizhawk Executable Path
+* BizHawk Executable Path
 * Duckstation Executable Path
+* PCSX2 Executable Path
+* RAP64 Executable Path
+* RetroArch Executable Path
 
 At least one emulator executable path must be provded for this program to work.
 
